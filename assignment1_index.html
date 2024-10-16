@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bhavika Wiki Page</title>
+    <style>
+        body {
+            font-family: 'Trebuchet MS', sans-serif;
+            background-color: #f3f3f3;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Main container */
+        .container {
+            max-width: 1000px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            color: #007bff;
+            font-size: 2.5rem;
+            margin-bottom: 30px;
+            font-family: 'Georgia', serif;
+        }
+
+        /* Fancy border for sections */
+        section {
+            margin-bottom: 20px;
+            border: 2px solid #007bff;
+            padding: 15px;
+            border-radius: 10px;
+            background-color: #fff;
+            transition: all 0.3s ease;
+        }
+
+        section:hover {
+            box-shadow: 0 5px 15px rgba(0, 123, 255, 0.2);
+        }
+
+        /* Table of Contents Styling */
+        .toc {
+            background-color: #f9f9f9;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+
+        .toc h2 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            color: #007bff;
+        }
+
+        .toc ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .toc a {
+            text-decoration: none;
+            color: #007bff;
+            font-weight: bold;
+        }
+
+        .toc a:hover {
+            text-decoration: underline;
+        }
+
+        /* Collapsible Styling */
+        .collapse-content {
+            display: none;
+            margin-top: 15px;
+        }
+
+        .heading {
+            cursor: pointer;
+            font-size: 22px;
+            background-color: #007bff;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            display: block;
+            width: 100%;
+            text-align: left;
+            transition: background-color 0.3s ease;
+        }
+
+        .heading:hover {
+            background-color: #0056b3;
+        }
+
+        /* Sub-section Styling */
+        .subheading {
+            cursor: pointer;
+            font-size: 18px;
+            background-color: #28a745;
+            color: white;
+            padding: 8px 15px;
+            border-radius: 5px;
+            margin-top: 10px;
+            display: block;
+            width: 100%;
+        }
+
+        .subheading:hover {
+            background-color: #218838;
+        }
+
+        /* Dropdown Content */
+        .dropdown-content {
+            display: none;
+            padding: 15px;
+            background-color: #e9ecef;
+            border-left: 3px solid #007bff;
+            margin-top: 5px;
+            border-radius: 5px;
+        }
+
+        /* Animation for smooth collapses */
+        .collapse-content, .dropdown-content {
+            transition: max-height 0.3s ease-in-out;
+            overflow: hidden;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Nehal's Wikipedia Page</h1>
+
+        <!-- Table of Contents -->
+        <div class="toc">
+            <h2>Table of Contents</h2>
+            <ul id="toc-list"></ul>
+        </div>
+
+        <!-- Section 1: Early Life -->
+        <section id="section-early-life">
+            <div class="heading" onclick="toggleCollapse('content-early-life')">Early Life</div>
+            <div id="content-early-life" class="collapse-content">
+                <h2>Early Life (h1)</h2>
+                <div class="subheading" onclick="toggleCollapse('school-dropdown')">School</div>
+                <div id="school-dropdown" class="dropdown-content">
+                    <p><strong>Sophia Sr Secondary School</strong></p>
+                    <p>Details about your schooling in Sophia Sr Secondary School...</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 2: Career -->
+        <section id="section-career">
+            <div class="heading" onclick="toggleCollapse('content-career')">Career</div>
+            <div id="content-career" class="collapse-content">
+                <h2>Career (h1)</h2>
+                <div class="subheading" onclick="toggleCollapse('college-dropdown')">College</div>
+                <div id="college-dropdown" class="dropdown-content">
+                    <p><strong>VIT Chennai</strong></p>
+                    <p>Details about your college life at VIT Chennai...</p>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <script>
+        // JavaScript function to toggle the collapsible sections and dropdowns
+        function toggleCollapse(contentId) {
+            const content = document.getElementById(contentId);
+            const isCollapsed = content.style.display === "block";
+
+            // Smooth toggle effect
+            if (!isCollapsed) {
+                content.style.display = "block";
+                content.style.maxHeight = content.scrollHeight + "px";
+            } else {
+                content.style.maxHeight = "0px";
+                setTimeout(() => {
+                    content.style.display = "none";
+                }, 300);
+            }
+        }
+
+        // Generate Table of Contents dynamically
+        function generateTOC() {
+            const tocList = document.getElementById('toc-list');
+            const sections = document.querySelectorAll('section');
+
+            sections.forEach((section) => {
+                const heading = section.querySelector('.heading').innerText;
+                const li = document.createElement('li');
+                const a = document.createElement('a');
+                a.href = #section-${heading.toLowerCase().replace(/ /g, '-')};
+                a.innerText = heading;
+                li.appendChild(a);
+                tocList.appendChild(li);
+            });
+        }
+
+        // Call TOC generation on page load
+        window.onload = generateTOC;
+    </script>
+
+</body>
+</html>
